@@ -13,7 +13,7 @@
   <url>http://www.example.com</url>
 
   <properties>
-          <java.version>1.8</java.version>
+          <java.version>9</java.version>
         <junit.version>4.13.2</junit.version>
         <cucumber.version>7.18.1</cucumber.version>
         <maven.compiler.version>3.13.0</maven.compiler.version>
@@ -36,6 +36,27 @@
 			<artifactId>webdrivermanager</artifactId>
 			<version>5.8.0</version>
 		</dependency>
+		
+<!--		 <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>7.4.0</version>
+        <scope>test</scope>
+    </dependency> -->
+
+		
+<!-- <dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-testng</artifactId>
+    <version>7.18.1</version>
+       </dependency>  -->
+
+<dependency>
+    <groupId>org.projectlombok</groupId>
+    <artifactId>lombok</artifactId>
+    <version>1.18.26</version> <!-- Use the latest version compatible with your JDK -->
+    <scope>provided</scope>
+</dependency>
 		
         <dependency>
     <groupId>io.cucumber</groupId>
@@ -74,12 +95,44 @@
             <artifactId>vertx-web</artifactId>
             <version>${vertx.version}</version>
         </dependency>
+          
 
+          
         <dependency>
             <groupId>io.vertx</groupId>
             <artifactId>vertx-jdbc-client</artifactId>
             <version>${vertx.version}</version>
         </dependency>
+        
+        <dependency>
+    <groupId>tech.grasshopper</groupId>
+    <artifactId>extent-pdf-report</artifactId>
+    <version>2.12.0</version>
+   </dependency>
+
+     <dependency>
+       <groupId>tech.grasshopper</groupId>
+       <artifactId>htmlextentreporter</artifactId>
+    <version>1.1.0</version>
+      </dependency>
+      
+       <dependency>
+    <groupId>tech.grasshopper</groupId>
+    <artifactId>extentreports-cucumber7-adapter</artifactId>
+    <version>1.14.0</version>
+     </dependency>
+    <dependency>
+    <groupId>tech.grasshopper</groupId>
+    <artifactId>cucumber-pdf-report</artifactId>
+    <version>2.14.0</version>
+</dependency>
+
+       <dependency>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.13.0</version>
+     </dependency>
+
 
         <dependency>
             <groupId>org.hsqldb</groupId>
@@ -108,131 +161,24 @@
         </dependency>
   </dependencies>
 
-  <build>
-     <testResources>
-            <testResource>
-                <directory>src/test/resources</directory>
-                <filtering>true</filtering>
-            </testResource>
-        </testResources>
-
-        <plugins>
+  <build> 
+       <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven.compiler.version}</version>
-                <configuration>
-                    <encoding>UTF-8</encoding>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <compilerArgument>-Werror</compilerArgument>
-                </configuration>
-            </plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.version}</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+				</configuration>
+			</plugin>
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>2.3</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <transformers>
-                                <transformer
-                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <manifestEntries>
-                                        <Main-Class>io.vertx.core.Starter</Main-Class>
-                                        <Main-Verticle>skeleton.MyFirstVerticle</Main-Verticle>
-                                    </manifestEntries>
-                                </transformer>
-                            </transformers>
-                            <artifactSet/>
-                            <outputFile>${project.build.directory}/${project.artifactId}-${project.version}-fat.jar
-                            </outputFile>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.9.1</version>
-                <executions>
-                    <execution>
-                        <id>reserve-network-port</id>
-                        <goals>
-                            <goal>reserve-network-port</goal>
-                        </goals>
-                        <phase>process-sources</phase>
-                        <configuration>
-                            <portNames>
-                                <portName>http.port</portName>
-                            </portNames>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <!-- We use the maven-antrun-plugin to start the application before the integration tests and stop them afterward -->
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
-                    <execution>
-                        <id>start-vertx-app</id>
-                        <phase>pre-integration-test</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <!--
-                                Launch the application as in 'production' using the fatjar.
-                                We pass the generated configuration, configuring the http port to the picked one
-                                -->
-                                <exec executable="${java.home}/bin/java"
-                                      dir="${project.build.directory}"
-                                      spawn="true">
-                                    <arg value="-jar"/>
-                                    <arg value="${project.artifactId}-${project.version}-fat.jar"/>
-                                    <arg value="-conf"/>
-                                    <arg value="${project.build.directory}/test-classes/my-it-config.json"/>
-                                </exec>
-                            </target>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>stop-vertx-app</id>
-                        <phase>post-integration-test</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <!--
-                              Kill the started process.
-                              Finding the right process is a bit tricky. Windows command in in the windows profile (below)
-                              -->
-                            <target>
-                                <exec executable="bash"
-                                      dir="${project.build.directory}"
-                                      spawn="false">
-                                    <arg value="-c"/>
-                                    <arg value="ps ax | grep -Ei '[\-]DtestPort=${http.port}\s+\-jar\s+${project.artifactId}' | awk 'NR==1{print $1}' | xargs kill -SIGTERM"/>
-                                </exec>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.18.1</version>
+               <version>2.22.2</version>
                 <executions>
                     <execution>
                         <goals>
@@ -240,9 +186,12 @@
                             <goal>verify</goal>
                         </goals>
                         <configuration>
-                            <systemProperties>
-                                <http.port>${http.port}</http.port>
-                            </systemProperties>
+						    <includes>
+								<include>**/MyTestRunner.java</include>
+								 </includes>	
+								<parallel>methods</parallel>
+							    <threadCount>4</threadCount>		
+							    <perCoreThreadCount>true</perCoreThreadCount>			    					
                         </configuration>
                     </execution>
                 </executions>
@@ -250,45 +199,4 @@
 
         </plugins>
     </build>
-
-    <profiles>
-        <!-- A profile for windows as the stop command is different -->
-       <profile>
-            <id>windows</id>
-            <activation>
-                <os>
-                    <family>windows</family>
-                </os>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <artifactId>maven-antrun-plugin</artifactId>
-                        <version>1.8</version>
-                        <executions>
-                            <execution>
-                                <id>stop-vertx-app</id>
-                                <phase>post-integration-test</phase>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <configuration>
-                                    <target>
-                                        <exec executable="wmic"
-                                              dir="${project.build.directory}"
-                                              spawn="false">
-                                            <arg value="process"/>
-                                            <arg value="where"/>
-                                            <arg value="CommandLine like '%${project.artifactId}%' and not name='wmic.exe'"/>
-                                            <arg value="delete"/>
-                                        </exec>
-                                    </target>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-  </build>
-  </profile>
-  </profiles>
 </project>

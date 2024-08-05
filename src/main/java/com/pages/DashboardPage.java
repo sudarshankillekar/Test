@@ -38,13 +38,9 @@ public class DashboardPage {
 		return StoredNavList;		
 	}
 	
-	public void userClicksOnCreateJob() throws InterruptedException {
+	public CreateJobpage goToCreateJobPage() throws InterruptedException {
 		driver.findElement(creatJob).click();
 		Thread.sleep(5000);
-	}
-	
-	
-	
-	
-	
+		return new CreateJobpage(driver);
+	}	
 }

@@ -8,10 +8,11 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		        publish = true ,
-				features = {"src\\test\\resources\\AppFeatures\\DashBoardPage.feature"},
+				features = {"src\\test\\resources\\AppFeatures"},
 				glue = {"stepdefinations", "AppHooks"},
-				plugin = {"pretty","html:target/cucumber-reports"},
-		        monochrome = true
+						plugin = {"pretty",
+								"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+								"timeline:test-output/"}						
 				)
 
 public class MyTestRunner {

@@ -24,7 +24,6 @@ public class DashBoardPageSteps {
 	   List<Map<String,String>> credList = dataTable.asMaps();
 	  String username =  credList.get(0).get("username");
 	  String password = credList.get(0).get("password");
-	  
 	  DriverFactory.getDriver().get("http://phoenix.testautomationacademy.in/sign-in");
 	  try {
 		Thread.sleep(5000);
@@ -46,10 +45,7 @@ public class DashBoardPageSteps {
 	   System.out.println("expected NavSectionList"+ expAccountSectionList);
 	   List<String> actualAccountSectionList = dashboardPage.getAccountsSectionList();
 	   System.out.println("actual NavSectionList"+actualAccountSectionList);
-	   Assert.assertTrue(expAccountSectionList.containsAll(actualAccountSectionList));
-			   
-		
-		
+	   Assert.assertTrue(expAccountSectionList.containsAll(actualAccountSectionList));		
 	}
 
 	@Then("Nav sections count should be {int}")
@@ -59,7 +55,7 @@ public class DashBoardPageSteps {
 	
 	@Then("User Goes on Create Job Page")
 	public void user_goes_on_create_job_page() throws InterruptedException {
-	   dashboardPage.userClicksOnCreateJob();
+	   dashboardPage.goToCreateJobPage();
 	}
 	
 }
