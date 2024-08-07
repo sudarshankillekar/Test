@@ -8,6 +8,7 @@ import org.junit.Assert;
 
 import com.pages.DashboardPage;
 import com.pages.FrontDeskLoginPage;
+import com.pages.RepairJobPage;
 import com.qa.factory.DriverFactory;
 
 import io.cucumber.datatable.DataTable;
@@ -18,7 +19,7 @@ public class DashBoardPageSteps {
 
 	FrontDeskLoginPage frontDeskLoginPage = new FrontDeskLoginPage(DriverFactory.getDriver());
 	private DashboardPage dashboardPage ;
-	
+	private RepairJobPage repairJobPage;
 	@Given("user has already logged in to the application")
 	public void user_has_already_logged_in_to_the_application(DataTable dataTable) throws InterruptedException {
 	   List<Map<String,String>> credList = dataTable.asMaps();
@@ -31,6 +32,7 @@ public class DashBoardPageSteps {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+//	  repairJobPage = frontDeskLoginPage.doLoginWithengg(username, password) ;
 	  dashboardPage = frontDeskLoginPage.doLoginWith(username, password);
 	}
 
@@ -56,6 +58,17 @@ public class DashBoardPageSteps {
 	@Then("User Goes on Create Job Page")
 	public void user_goes_on_create_job_page() throws InterruptedException {
 	   dashboardPage.goToCreateJobPage();
+	}
+	
+	@Given("Engineer is on repair job page")
+	public void engineer_is_on_repair_job_page() {
+	    dashboardPage.verifyrepairJob();
+	}
+
+	@Then("Engineer clicks on create job")
+	public void engineer_clicks_on_create_job() throws InterruptedException {
+	   dashboardPage.clickOnverifyrepairJob();
+	   Thread.sleep(5000);
 	}
 	
 }

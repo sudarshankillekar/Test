@@ -10,7 +10,7 @@ public class DashboardPage {
 
 	private WebDriver driver ;
 	
-	private final By NavOptions = By.xpath("//div[@class = \"fuse-vertical-navigation-item-title-wrapper ng-star-inserted\"]");
+	private final By repairJobPage = By.xpath("//span[contains(text(),\"Repair Job\") ]");private final By NavOptions = By.xpath("//div[@class = \"fuse-vertical-navigation-item-title-wrapper ng-star-inserted\"]");
     private final By CreatedToday = By.xpath("//div[contains(text(),\" Created today \")]"); 
     private final By creatJob = By.xpath("//span[contains(text(),\" Create Job \")]");
 	public DashboardPage(WebDriver driver) {
@@ -25,6 +25,14 @@ public class DashboardPage {
 	
 	public int getNavSectionCount() {
 		return driver.findElements(NavOptions).size();
+	}
+	
+	public boolean verifyrepairJob() {
+		return driver.findElement(repairJobPage).isDisplayed();
+	}
+	
+	public void clickOnverifyrepairJob() {
+		driver.findElement(repairJobPage).click();
 	}
 	
 	public List<String> getAccountsSectionList() {		
@@ -43,4 +51,6 @@ public class DashboardPage {
 		Thread.sleep(5000);
 		return new CreateJobpage(driver);
 	}	
+	
+	
 }
