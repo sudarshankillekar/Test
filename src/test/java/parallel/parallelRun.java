@@ -10,7 +10,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		        publish = true ,
-				features = {"src\\test\\resources\\parallel"},
+				features = {"src\\test\\resources\\parallel\\CreateJobWithexceldata.feature"},
+				monochrome = true,
 				glue = {"parallel"},
 						plugin = {"pretty",
 								"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",

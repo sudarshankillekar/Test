@@ -1,11 +1,10 @@
 package com.pages;
 
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import com.github.dockerjava.api.model.Driver;
-import com.qa.factory.DriverFactory;
+
+
 
 public class CreateJobpage {
 
@@ -39,7 +38,7 @@ public class CreateJobpage {
 	private final By Area = By.xpath("//input[@id = \"mat-input-16\"]");
 	private final By Pincode = By.xpath("//input[@id = \"mat-input-19\"]");
 	private final By Remarks = By.xpath("//input[@id = \"mat-input-21\"]");
-	private final By submit = By.xpath("//button[@type = \"submit\"]");
+	private final By submit = By.xpath("//span[contains(text(),\"Submit\")]");
 	
 	public CreateJobpage(WebDriver driver) {
 		this.driver = driver;
@@ -131,14 +130,40 @@ public class CreateJobpage {
 		driver.findElement(Street_Name).sendKeys(SN);
 	}
 	
-	public void Click_On_Submit() {
-		driver.findElement(submit).click();
+	public void Click_On_Submit()  {
+        driver.findElement(submit).click();
 	}
 	
+	public boolean verifySubmitButton() {
+		return driver.findElement(submit).isDisplayed();
+	}
 	
 	public void selectState() {
 		driver.findElement(ClickonSelectState).click();
 	    driver.findElement(SelectState).click();
+	}
+	
+	
+	public void fillCreateJobData(String IMIE,String Date,String remarks,String FirstName,String Lastname,String contact_no,String email_id ,String Flat_so_no , String enterAPTName,String landmark,String Streetname,String Area,String Pincode ) throws InterruptedException {
+		selectOEM();
+		selectPRODUCT_NAME();
+		selectenterModel_Name();
+		enterIMEI_Number(IMIE);
+		Date_of_Purchase(Date);
+		selectWatternty_status();
+		select_Problem();
+		Enter_remarks(remarks);
+		Enter_First_Name(FirstName);
+		Enter_LastName(Lastname);
+		Enter_Contact_No(contact_no);
+		Enter_Email_id(email_id);
+		Enter_flat_no(Flat_so_no);
+		Enter_ApartName(enterAPTName);
+		Enter_LandMark(landmark);
+		Enter_Street_Name(Streetname);
+		Enter_Area(Area);
+		selectState();
+		Enter_Pincode(Pincode);		
 	}
 	
 }

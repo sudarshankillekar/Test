@@ -1,14 +1,17 @@
 package parallel;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.junit.Assert;
 
 import com.pages.CreateJobpage;
 import com.pages.DashboardPage;
 import com.pages.FrontDeskLoginPage;
 import com.qa.factory.DriverFactory;
+import com.qa.util.ExcelReader;
 
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
@@ -83,11 +86,35 @@ public class CreateJobPageSteps {
 		  createJobpage.Enter_flat_no(FlatSocietyNo);
 	}
 
+	@When(":User enters the data from the given Sheetname {string} and rownumber {int}")
+	public void user_enters_the_data_from_the_given_sheetname_and_rownumber(String SheetName, Integer rowNumber) throws InvalidFormatException, IOException, InterruptedException {
+		ExcelReader reader = new ExcelReader();
+		List<Map<String,String>> testData = reader.getData("/Users/Lenovo/Desktop/Createjobdata.xlsx",SheetName);
+		String IMEI = testData.get(rowNumber).get("IMEI Number 1");
+		String Date_of_purchase = testData.get(rowNumber).get("Date of purchase");
+		String Remarks = testData.get(rowNumber).get("Remarks");
+		String First_Name = testData.get(rowNumber).get("First Name");
+		String Last_Name = testData.get(rowNumber).get("Last Name");
+		String Email_Id = testData.get(rowNumber).get("Email Id.");
+		String FlatSocietyNo = testData.get(rowNumber).get("Flat/Society No");
+		String Apartment_Name = testData.get(rowNumber).get("Apartment Name");
+		String Landmark = testData.get(rowNumber).get("Landmark");
+		String Street_Name = testData.get(rowNumber).get("Street Name");
+		String Area = testData.get(rowNumber).get("Area");
+		String Pincode = testData.get(rowNumber).get("Pincode");
+		String ContactNo = testData.get(rowNumber).get("Contact No"); 
+		
+	   createJobpage.fillCreateJobData(IMEI,Date_of_purchase,Remarks,First_Name,Last_Name, ContactNo ,Email_Id, FlatSocietyNo, Apartment_Name, Landmark, Area,Street_Name, Pincode);
+	}
+	
 	@Then(": User clicks on Submit button")
-	public void user_clicks_on_submit_button() throws InterruptedException {
-		Thread.sleep(5000);
+	public void user_clicks_on_submit_button() throws InterruptedException{
 		createJobpage.Click_On_Submit();
 	}
 		
-	
+	@Then(": User clicks on Submit button for excel data")
+	public void user_clicks_on_submit_button_for_excel_data()  {
+		createJobpage.Click_On_Submit();
+		Assert.assertTrue(createJobpage.verifySubmitButton());
+	}
 }
