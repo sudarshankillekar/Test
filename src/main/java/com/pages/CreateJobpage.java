@@ -1,9 +1,13 @@
 package com.pages;
 
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class CreateJobpage {
@@ -131,11 +135,12 @@ public class CreateJobpage {
 	}
 	
 	public void Click_On_Submit()  {
-        driver.findElement(submit).click();
+		driver.findElement(submit).click();
+	  //  driver.findElement(submit).isEnabled();
 	}
 	
 	public boolean verifySubmitButton() {
-		return driver.findElement(submit).isDisplayed();
+		return driver.findElement(submit).isEnabled();
 	}
 	
 	public void selectState() {

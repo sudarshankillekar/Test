@@ -8,11 +8,11 @@ import io.cucumber.junit.CucumberOptions;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		        publish = true ,
-				features = {"src\\test\\resources\\AppFeatures"},
+				features = {"src\\test\\resources\\DashBoardPage.feature"},
 				glue = {"stepdefinations", "AppHooks"},
 						plugin = {"pretty",
 								"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
-								"timeline:test-output/"}						
+								"timeline:test-output/","rerun:target/failedrerun.txt"}						
 				)
 
 public class MyTestRunner {

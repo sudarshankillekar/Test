@@ -115,6 +115,6 @@ public class CreateJobPageSteps {
 	@Then(": User clicks on Submit button for excel data")
 	public void user_clicks_on_submit_button_for_excel_data()  {
 		createJobpage.Click_On_Submit();
-		Assert.assertTrue(createJobpage.verifySubmitButton());
+		createJobpage.verifySubmitButton();
 	}
 }

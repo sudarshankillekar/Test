@@ -11,7 +11,7 @@ Scenario: User fills device details
 Given :User is on the Create job page
 When : User enters the following details 
 |Field|
-|12345788918329|
+|123457889183239|
 |09/12/2023|
 |drained|
 |Sudarshan|

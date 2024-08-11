@@ -2,6 +2,8 @@ Feature: DashBoardPage
 
 Background:
 
+
+
 Given user has already logged in to the application
 |username|password|
 |iamfd|password|
