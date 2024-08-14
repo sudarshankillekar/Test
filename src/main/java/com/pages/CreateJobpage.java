@@ -135,8 +135,9 @@ public class CreateJobpage {
 	}
 	
 	public void Click_On_Submit()  {
-		driver.findElement(submit).click();
-	  //  driver.findElement(submit).isEnabled();
+		    WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(30));
+	       WebElement ssubmit = wait.until(ExpectedConditions.visibilityOfElementLocated(submit));
+		   ssubmit.click();
 	}
 	
 	public boolean verifySubmitButton() {

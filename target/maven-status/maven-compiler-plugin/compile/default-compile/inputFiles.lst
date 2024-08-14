@@ -1,7 +1,12 @@
 C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\main\java\com\pages\CreateJobpage.java
 C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\main\java\com\pages\DashboardPage.java
 C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\main\java\com\pages\FrontDeskLoginPage.java
+C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\main\java\com\pages\RepairJobPage.java
 C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\main\java\com\qa\factory\DriverFactory.java
 C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\main\java\com\qa\util\ConfigReader.java
 C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\main\java\com\qa\util\Constants.java
 C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\main\java\com\qa\util\elementUtil.java
+C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\main\java\com\qa\util\ExcelReader.java
+C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\main\java\stepdefinations\CreateJobPageSteps.java
+C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\main\java\stepdefinations\DashBoardPageSteps.java
+C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\main\java\stepdefinations\FrontDeskLoginSteps.java

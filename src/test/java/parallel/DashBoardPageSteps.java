@@ -60,15 +60,5 @@ public class DashBoardPageSteps {
 	   dashboardPage.goToCreateJobPage();
 	}
 	
-	@Given("Engineer is on repair job page")
-	public void engineer_is_on_repair_job_page() {
-	    dashboardPage.verifyrepairJob();
-	}
-
-	@Then("Engineer clicks on create job")
-	public void engineer_clicks_on_create_job() throws InterruptedException {
-	   dashboardPage.clickOnverifyrepairJob();
-	   Thread.sleep(5000);
-	}
 	
 }

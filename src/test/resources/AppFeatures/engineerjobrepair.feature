@@ -8,4 +8,7 @@ Given user has already logged in to the application
 
 Scenario: Verifying Dashboard page Nav options 
 Given Engineer is on repair job page 
-Then Engineer clicks on create job
+Then Engineer clicks on Repair job
+
+
+

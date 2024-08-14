@@ -4,7 +4,5 @@ C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\test\java\parallel\Creat
 C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\test\java\parallel\DashBoardPageSteps.java
 C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\test\java\parallel\FrontDeskLoginSteps.java
 C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\test\java\parallel\parallelRun.java
-C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\test\java\stepdefinations\CreateJobPageSteps.java
-C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\test\java\stepdefinations\DashBoardPageSteps.java
-C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\test\java\stepdefinations\FrontDeskLoginSteps.java
+C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\test\java\parallel\RerunFailedScripts.java
 C:\Users\Lenovo\Desktop\Framework\UI_Automation_BDD\src\test\java\testRunner\MyTestRunner.java
