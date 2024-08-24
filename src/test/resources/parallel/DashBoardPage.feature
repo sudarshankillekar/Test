@@ -8,13 +8,16 @@ Given user has already logged in to the application
 |sudarshan|killekar|
 
 Scenario: Verifying Dashboard page Nav options 
-Given User is on dashbaord page
+#Given User is on dashbaord page
 Then User gets the Nav options
 | Dashboard |
-| Create Joob |
+| Create Job |
 |Ready for delivery|
 | Download Delivery Note|
 | Inward CC Jobs |
 And Nav sections count should be 5
+When user click on job created today
 Then User Goes on Create Job Page 
-  
+
+Scenario: 
+#Then : Search for IMEI number "39523053933055"   

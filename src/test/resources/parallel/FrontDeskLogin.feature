@@ -15,8 +15,12 @@ Then User verifies for username and password text
 And User checks validate Sign-in button 
 
 @Regression @skip
-Scenario: Login with correct credentials 
-When User enters username "iamfd"
-And User enter password "password"
+Scenario Outline: Login with correct credentials 
+When User enters username <email>
+And User enter password <password>
 And clicks on Login button
+Examples:
+|email|password|
+|iamfd|password|
+|iameng|password|
  

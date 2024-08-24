@@ -10,7 +10,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		        publish = true ,
-				features = {"src\\test\\resources\\parallel\\FrontDeskLogin.feature"},
+				features = {"src\\test\\resources\\parallel\\EdashBoard.feature"},
 				monochrome = true,
 				glue = {"parallel"},
 						plugin = {"pretty",

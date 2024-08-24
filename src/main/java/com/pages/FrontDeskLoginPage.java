@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 
+import com.qa.factory.DriverFactory;
+
 public class FrontDeskLoginPage {
     
 	private WebDriver driver ;
@@ -60,14 +62,14 @@ public class FrontDeskLoginPage {
 		return new DashboardPage(driver);
 	}
 	
-	public RepairJobPage doLoginWithengg(String username ,String Pwd) throws InterruptedException {
+	public EngineerDashBoardPage doLoginWithengg(String username ,String Pwd) throws InterruptedException {
 		driver.findElement(UserName).clear();
 		driver.findElement(UserName).sendKeys(username);
 		driver.findElement(Password).clear();
 		driver.findElement(Password).sendKeys(Pwd);
 		driver.findElement(SignIn).click();
 		Thread.sleep(5000);
-		return new RepairJobPage(driver);
+		return new EngineerDashBoardPage(DriverFactory.getDriver());
 	}
 	
 }

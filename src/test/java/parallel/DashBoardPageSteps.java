@@ -14,12 +14,12 @@ import com.qa.factory.DriverFactory;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 public class DashBoardPageSteps {
 
 	FrontDeskLoginPage frontDeskLoginPage = new FrontDeskLoginPage(DriverFactory.getDriver());
 	private DashboardPage dashboardPage ;
-	private RepairJobPage repairJobPage;
 	@Given("user has already logged in to the application")
 	public void user_has_already_logged_in_to_the_application(DataTable dataTable) throws InterruptedException {
 	   List<Map<String,String>> credList = dataTable.asMaps();
@@ -51,9 +51,21 @@ public class DashBoardPageSteps {
 	}
 
 	@Then("Nav sections count should be {int}")
-	public void accounts_sections_count_should_be(Integer expectedCount) {
+	public void accounts_sections_count_should_be(Integer expectedCount) throws InterruptedException {
 	   Assert.assertTrue(dashboardPage.getNavSectionCount()== expectedCount);
 	}
+	
+	@When("user click on job created today")
+	public void user_click_on_job_created_today() throws InterruptedException {
+	   dashboardPage.clickOnJobCreatededToday();
+	}
+	
+	@Then("search job number {string}")
+	public void search_job_number(String jobNumber) {
+	boolean status =   dashboardPage.searchForJob(jobNumber);
+	System.out.println(status);
+	}
+	
 	
 	@Then("User Goes on Create Job Page")
 	public void user_goes_on_create_job_page() throws InterruptedException {
