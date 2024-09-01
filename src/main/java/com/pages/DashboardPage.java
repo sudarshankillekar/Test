@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.factory.DriverFactory;
 import com.qa.util.JobFilter;
+import com.qa.util.TestUtility;
 import com.qa.util.elementUtil;
 import com.ui.pojo.GlobalDetailsPojo;
 
@@ -82,27 +83,16 @@ public class DashboardPage extends elementUtil {
 	}
 	
 	public boolean searchForJob(String jobNumber) {
-		List<WebElement>rowlist = findElements(TABLE_LOCATOR);
-		GlobalDetailsPojo globalDetailsPojo;
-		ArrayList<GlobalDetailsPojo> dataList = new ArrayList<>();
-		for(WebElement row : rowlist) {
-			List<WebElement>cellList = row.findElements(TABLE_CELL_LOCATOR);
-		    globalDetailsPojo = new GlobalDetailsPojo(cellList.get(0).getText(), cellList.get(1).getText(), cellList.get(2).getText(), cellList.get(3).getText(), cellList.get(4).getText(), cellList.get(5).getText(), cellList.get(6).getText());
-		    dataList.add(globalDetailsPojo);
-		}
-		
-//		for(GlobalDetailsPojo globalDetailsPojo1 :dataList) {
-//			System.out.println(globalDetailsPojo1);
-//		}
-	 List<GlobalDetailsPojo> resultList =	dataList.stream().filter(new JobFilter(jobNumber)).toList();
-	 System.out.println(resultList);
+	   ArrayList<GlobalDetailsPojo> dataList      =	getTableData(TABLE_LOCATOR, TABLE_CELL_LOCATOR);
+	   List<GlobalDetailsPojo> resultList = TestUtility.searchDataInList(dataList, jobNumber) ;
+	   System.out.println(resultList);
 	 if(resultList.size()>0) {
 		 return true;
 	 }else {
 		 return false;
-	 }
-		
+	 }		
 	}
+	
 	
 	public CreateJobpage goToCreateJobPage() throws InterruptedException {
 		clickOn(creatJob);

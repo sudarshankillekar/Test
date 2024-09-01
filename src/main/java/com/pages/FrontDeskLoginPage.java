@@ -5,9 +5,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
 
 import com.qa.factory.DriverFactory;
+import com.qa.util.Browser;
+import com.qa.util.elementUtil;
 
-public class FrontDeskLoginPage {
+public class FrontDeskLoginPage extends elementUtil {
     
+	public FrontDeskLoginPage(WebDriver driver)  {
+		super(driver);
+		goToWebSite("http://phoenix.testautomationacademy.in/sign-in");
+	}
+	
+	public FrontDeskLoginPage(Browser browser)  {
+		super(browser);
+		goToWebSite("http://phoenix.testautomationacademy.in/sign-in");
+	}
+
 	private WebDriver driver ;
 		
 	private final By UserNameText = By.xpath("//mat-label[contains(text(),\"Username\")]");
@@ -16,9 +28,7 @@ public class FrontDeskLoginPage {
 	private final By Password = By.id("password");
 	private final By SignIn = By.xpath("//span[contains(text(),\" Sign in \")]");
 	
-	public FrontDeskLoginPage(WebDriver driver) {
-		this.driver = driver;
-	}
+
 	
 	public String getPageTitle() {
 		return driver.getTitle();
@@ -52,14 +62,14 @@ public class FrontDeskLoginPage {
 		driver.findElement(SignIn).click();
 	}
 	
-	public DashboardPage doLoginWith(String username ,String Pwd) throws InterruptedException {
-		driver.findElement(UserName).clear();
-		driver.findElement(UserName).sendKeys(username);
-		driver.findElement(Password).clear();
-		driver.findElement(Password).sendKeys(Pwd);
-		driver.findElement(SignIn).click();
+	public DashboardPage doLoginWith(String username ,String Pwd) throws InterruptedException {		
+		clearText(UserName);
+		enterTextInto(UserName, username);
+		clearText(Password);
+		enterTextInto(Password, Pwd);
+		clickOn(SignIn);
 		Thread.sleep(5000);
-		return new DashboardPage(driver);
+		return new DashboardPage(getDriver());
 	}
 	
 	public EngineerDashBoardPage doLoginWithengg(String username ,String Pwd) throws InterruptedException {

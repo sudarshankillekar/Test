@@ -3,13 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="parallel.parallelRun">
+      <class name="com.ui.test.LoginTest">
         <methods>
-          <include name="setUpClass"/>
-          <include name="runScenario" invocation-numbers="4 1"/>
-          <include name="tearDownClass"/>
+          <include name="verifyUserLogin"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- parallel.parallelRun -->
+      </class> <!-- com.ui.test.LoginTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

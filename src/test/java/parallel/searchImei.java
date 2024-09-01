@@ -1,5 +1,7 @@
 package parallel;
 
+import org.openqa.selenium.WebDriver;
+
 import com.pages.EngineerDashBoardPage;
 import com.pages.FrontDeskLoginPage;
 import com.pages.GlobalList;
@@ -14,10 +16,10 @@ public class searchImei {
 //		private EngineerDashBoardPage engineerDashBoardPage ;
 	  
 	  
-	FrontDeskLoginPage frontDeskLoginPage = new FrontDeskLoginPage(DriverFactory.getDriver()); 
-	public void useron () {
+//	FrontDeskLoginPage frontDeskLoginPage = new FrontDeskLoginPage(); 
+//	public void useron () {
 //	       FrontDeskLoginPage.
-	}
+//	}
 	
 	@Then(": user seacrhes for device details")
 	public void user_seacrhes_for_device_details() throws InterruptedException {

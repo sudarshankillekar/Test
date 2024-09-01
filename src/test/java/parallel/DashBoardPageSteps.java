@@ -5,6 +5,7 @@ import static org.junit.Assert.assertTrue;
 import java.util.*;
 
 import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
 
 import com.pages.DashboardPage;
 import com.pages.FrontDeskLoginPage;
@@ -17,8 +18,10 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class DashBoardPageSteps {
-
-	FrontDeskLoginPage frontDeskLoginPage = new FrontDeskLoginPage(DriverFactory.getDriver());
+   
+	
+	 WebDriver driver;
+	FrontDeskLoginPage frontDeskLoginPage = new FrontDeskLoginPage(driver);
 	private DashboardPage dashboardPage ;
 	@Given("user has already logged in to the application")
 	public void user_has_already_logged_in_to_the_application(DataTable dataTable) throws InterruptedException {
