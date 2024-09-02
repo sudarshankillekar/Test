@@ -15,14 +15,14 @@ import io.cucumber.java.After;
 
 public class LoginTest  {
 	
-	WebDriver driver;
+	
 	
 	DashboardPage dashboardPage;
 	FrontDeskLoginPage frDeskLoginPage;
 	
 	@BeforeMethod(description = "Setup for the tests")
 	public void setup() throws InterruptedException {
-		frDeskLoginPage = new FrontDeskLoginPage(driver);	
+		frDeskLoginPage = new FrontDeskLoginPage(Browser.CHROME);	
 		Thread.sleep(5000);
 	}
 	
