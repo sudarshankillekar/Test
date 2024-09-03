@@ -22,7 +22,7 @@ public class LoginTest  {
 	
 	@BeforeMethod(description = "Setup for the tests")
 	public void setup() throws InterruptedException {
-		frDeskLoginPage = new FrontDeskLoginPage(Browser.CHROME);	
+		frDeskLoginPage = new FrontDeskLoginPage(Browser.FF);	
 		Thread.sleep(5000);
 	}
 	

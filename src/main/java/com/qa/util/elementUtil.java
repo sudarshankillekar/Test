@@ -45,7 +45,7 @@ public abstract class elementUtil {
 	}
 
     public void  goToWebSite(String string) {
-       	driver.getCurrentUrl();
+       	driver.get(string);
     }
     
     public void clearText(By locator) {
