@@ -3,7 +3,6 @@ package com.api.test;
 import com.api.pojo.LoginPojo;
 
 import com.qa.util.TestUtility;
-import static io.restassured.RestAssured.*;
 
 import io.restassured.RestAssured;
 import io.restassured.http.Header;

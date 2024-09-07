@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-09-02T23:45:59 IST" name="Default suite" finished-at="2024-09-02T23:47:53 IST" duration-ms="113874">
+  <suite started-at="2024-09-08T03:44:00 IST" name="Default suite" finished-at="2024-09-08T03:44:30 IST" duration-ms="30284">
     <groups>
     </groups>
-    <test started-at="2024-09-02T23:45:59 IST" name="Default test" finished-at="2024-09-02T23:47:53 IST" duration-ms="113874">
-      <class name="com.ui.test.LoginTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.ui.test.LoginTest@1ed6388a]" started-at="2024-09-02T23:45:59 IST" name="setup" description="Setup for the tests" finished-at="2024-09-02T23:47:47 IST" duration-ms="107840" status="PASS">
+    <test started-at="2024-09-08T03:44:00 IST" name="Default test" finished-at="2024-09-08T03:44:30 IST" duration-ms="30284">
+      <class name="com.ui.test.DashBoardPageTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.ui.test.DashBoardPageTest@5d534f5d]" started-at="2024-09-08T03:44:00 IST" name="setup" description="Setup for the tests" finished-at="2024-09-08T03:44:19 IST" duration-ms="19366" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="verifyUserLogin()[pri:0, instance:com.ui.test.LoginTest@1ed6388a]" started-at="2024-09-02T23:47:47 IST" name="verifyUserLogin" finished-at="2024-09-02T23:47:53 IST" duration-ms="5970" status="PASS">
+        <test-method signature="verifyForTextPreseny()[pri:0, instance:com.ui.test.DashBoardPageTest@5d534f5d]" started-at="2024-09-08T03:44:19 IST" name="verifyForTextPreseny" finished-at="2024-09-08T03:44:30 IST" duration-ms="10846" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifyUserLogin -->
-      </class> <!-- com.ui.test.LoginTest -->
+        </test-method> <!-- verifyForTextPreseny -->
+      </class> <!-- com.ui.test.DashBoardPageTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -1,12 +1,17 @@
 package com.qa.util;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.io.FilenameUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,10 +20,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.mchange.io.FileUtils;
 import com.ui.pojo.GlobalDetailsPojo;
 public abstract class elementUtil {
 
-	WebDriver driver;
+	private WebDriver driver;
+	private static WebDriver wdScreenshot;
     
 	public WebDriver getDriver() {
 		return driver;
@@ -42,6 +49,7 @@ public abstract class elementUtil {
 		else if(browser == Browser.FF){
 			driver= new EdgeDriver();
 		}
+		wdScreenshot = driver;
 	}
 
     public void  goToWebSite(String string) {
@@ -120,6 +128,18 @@ public abstract class elementUtil {
 			dataList.add(e.getText());
 		}
 		return dataList;
+    }
+    
+    public static void takeScreenShot(String fileName) {
+    	TakesScreenshot screenshot = (TakesScreenshot)wdScreenshot;
+    	File f = screenshot.getScreenshotAs(OutputType.FILE);
+    	File scrFile = new File(System.getProperty("user.dir")+"//screenshots//"+fileName+".png");
+    	try {
+			org.apache.commons.io.FileUtils.copyFile(f, scrFile);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     public void clickElementWhenVisible(WebDriver driver, By locator) {

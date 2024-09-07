@@ -64,11 +64,11 @@ public class EngineerDashBoardPage extends elementUtil {
 	
 	
 	public void clickOnRepairJob(){ 
-		clickElementWhenVisible(DriverFactory.getDriver(), RepairJob);
+		clickElementWhenVisible(getDriver(), RepairJob);
 	}
 	
     public void  EngineerClickOnBeginToRepair() {
-    	clickElementWhenVisible(DriverFactory.getDriver(), Begin_to_repair);
+    	clickElementWhenVisible(getDriver(), Begin_to_repair);
     }
 	
 	

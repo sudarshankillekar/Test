@@ -32,8 +32,10 @@ public class DashboardPage extends elementUtil {
     private final By creatJob = By.xpath("//span[contains(text(),\" Create Job \")]");
     private static final By SEARCH_TEXT_BOX_LOCATOR = By.xpath("//input[@placeholder=\"Search for a Job or IMEI\"]");
     private static final By Job_Created_today_button = By.xpath("//div[contains(text(),\"Created today\")]/../div/button");
+    private static final By Job_Created_today_text = By.xpath("//div[contains(text(),\"Created today\")]");
     private static final By TABLE_LOCATOR  =  By.xpath("//mat-table/mat-row");
     private static final By TABLE_CELL_LOCATOR  = By.xpath(".//mat-cell");
+    private static final By pending_for_delivery_button  = By.xpath("//div[contains(text(),\"Pending for delivery\")]/../div/button");
 //	 public void enterKeyInto(By locator ,Keys key) {
 //			WebElement element = driver.findElement(locator);
 //			element.sendKeys(key);
@@ -44,10 +46,20 @@ public class DashboardPage extends elementUtil {
 //			element.sendKeys(data);
 //		}
 	 
+    public String Job_Created_today_buttonText() throws InterruptedException {
+    	Thread.sleep(5000);
+    	return getVisibleText( Job_Created_today_text);
+    }
+    
 	 public void searchForJobUsing(String imeiorcellList) {
 		 enterTextInto(SEARCH_TEXT_BOX_LOCATOR, imeiorcellList);
 		 enterKeyInto(SEARCH_TEXT_BOX_LOCATOR, Keys.ENTER);
 	 }
+	 
+	 public DashboardPage click_On_pending_for_delivery() {
+		 clickOn(pending_for_delivery_button);
+		return new  DashboardPage(getDriver());
+	    }
 	 
 	 public void UserClickSoBeginRePair() {
 	     clickOn(ClickOnbeginrepair);
@@ -97,7 +109,7 @@ public class DashboardPage extends elementUtil {
 	public CreateJobpage goToCreateJobPage() throws InterruptedException {
 		clickOn(creatJob);
 		Thread.sleep(5000);
-		return new CreateJobpage(DriverFactory.getDriver());
+		return new CreateJobpage(getDriver());
 	}
 	
 }

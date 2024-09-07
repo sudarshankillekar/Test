@@ -26,11 +26,12 @@ public class LoginTest  {
 		Thread.sleep(5000);
 	}
 	
-	@Test
+	@Test(description = "test user login via ui", groups = {"sanity","smoke"})
 	public void verifyUserLogin() throws InterruptedException {
 	DashboardPage dashboardPage = frDeskLoginPage.doLoginWith("iamfd", "password");
 	Assert.assertTrue(dashboardPage.getCurrentUrl().contains("dashboard"));	
 	}
+	
 	
 	@After
 	public void tearDown() {
