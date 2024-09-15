@@ -9,13 +9,28 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.qa.util.Browser;
+import com.qa.util.elementUtil;
+import com.ui.pojo.CreateJobPojo;
 
-public class CreateJobpage {
+
+public class CreateJobpage extends elementUtil {
+
+	public CreateJobpage(WebDriver driver) {
+		super(driver);
+		// TODO Auto-generated constructor stub
+	}
+	
+	public CreateJobpage(Browser browser) {
+		super(browser);
+		// TODO Auto-generated constructor stub
+	}
+
 
 	private WebDriver driver ;
 	
 	private final By Problemsdetails = By.xpath("//strong[contains(text(),\"Problem Details\")]");
-	private final By ClickonOEM = By.xpath("//span[contains(text(),\"Select OEM\")]");
+	private final By ClickonOEM = By.xpath("//span[contains(text(),\"Select OEM\")]/../../..");
 	private final By OEM = By.xpath("//span[contains(text(),\" Apple \")]");
 	private final By ClickonPRODUCT_NAME = By.xpath("//span[contains(text(),\"Select Product name\")]");
 	private final By PRODUCT_NAME = By.xpath("//span[contains(text(),\"IPhone\")]");
@@ -44,10 +59,15 @@ public class CreateJobpage {
 	private final By Remarks = By.xpath("//input[@id = \"mat-input-21\"]");
 	private final By submit = By.xpath("//span[contains(text(),\"Submit\")]");
 	
-	public CreateJobpage(WebDriver driver) {
-		this.driver = driver;
+	
+   
+	public void createJobUsingPojo(CreateJobPojo createJobPojo){
+		enterTextInto(Remarks, createJobPojo.getRemarks());
+		enterTextInto(firstName, createJobPojo.getFirstName());
+		enterTextInto(IMEI_Number, createJobPojo.getIMEI_Numbe1());
+	    selectFromDropDown(ClickonOEM, createJobPojo.getOEM_NAME());
 	}
-
+	
 	public boolean verifycreatejobpage() {
 		return driver.findElement(Problemsdetails).isDisplayed();
 	}

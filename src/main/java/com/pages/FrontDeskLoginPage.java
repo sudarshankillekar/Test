@@ -8,7 +8,7 @@ import com.qa.factory.DriverFactory;
 import com.qa.util.Browser;
 import com.qa.util.elementUtil;
 
-public class FrontDeskLoginPage extends elementUtil {
+public class FrontDeskLoginPage extends Pages {
     
 	public FrontDeskLoginPage(WebDriver driver)  {
 		super(driver);

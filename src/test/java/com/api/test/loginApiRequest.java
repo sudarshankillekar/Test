@@ -13,7 +13,7 @@ public class loginApiRequest {
 
 	public static void main(String[] args) {
 		
-	RestAssured.baseURI = "http://139.59.91.96:9000/v1";
+//	RestAssured.baseURI = "http://139.59.91.96:9000/v1";
 	Header Myheader = new Header("Content-Type", "application/json");
 	LoginPojo loginPojo = new LoginPojo("iamfd", "password");
 	String jsonBody = TestUtility.convertPOJOToJSON(loginPojo);

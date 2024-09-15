@@ -15,7 +15,7 @@ import com.qa.util.TestUtility;
 import com.qa.util.elementUtil;
 import com.ui.pojo.GlobalDetailsPojo;
 
-public class DashboardPage extends elementUtil {
+public class DashboardPage extends Pages {
     
 	
 	

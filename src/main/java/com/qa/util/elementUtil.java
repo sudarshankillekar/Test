@@ -18,6 +18,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Sleeper;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.mchange.io.FileUtils;
@@ -26,6 +27,7 @@ public abstract class elementUtil {
 
 	private WebDriver driver;
 	private static WebDriver wdScreenshot;
+	private WebDriverWait wait ;
     
 	public WebDriver getDriver() {
 		return driver;
@@ -37,6 +39,8 @@ public abstract class elementUtil {
 
 	public elementUtil(WebDriver driver) {
 		this.driver = driver;
+		wdScreenshot = driver;
+		wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 	}
 	
     public elementUtil(Browser browser) {
@@ -50,6 +54,7 @@ public abstract class elementUtil {
 			driver= new EdgeDriver();
 		}
 		wdScreenshot = driver;
+		wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 	}
 
     public void  goToWebSite(String string) {
@@ -61,12 +66,13 @@ public abstract class elementUtil {
     }
     
 	public void clickOn(By locator) {
-    	WebElement element = driver.findElement(locator);
+		WebElement element =	 wait.until(ExpectedConditions.elementToBeClickable(locator));
     	element.click();
     }
     
      public void enterTextInto(By locator,String textToEnter) {
-    	 WebElement element = driver.findElement(locator);
+//    	 WebElement element = driver.findElement(locator);
+         WebElement element =	 wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     	 element.clear();
     	 element.sendKeys(textToEnter);
      }
@@ -76,7 +82,11 @@ public abstract class elementUtil {
     	 element.sendKeys(key);
      }
      
-     
+    public void  selectFromDropDown(By Dropdownlocator ,String value){
+    	clickOn(Dropdownlocator);
+		By locator = By.xpath("//span[contains(text(), ' "+Dropdownlocator+"\')]/..");
+		clickOn(locator);
+     }
      
      public void PauseFor(long time) throws InterruptedException {
     	 Thread.sleep(time);
@@ -92,7 +102,7 @@ public abstract class elementUtil {
    	   }
 	
     public String getVisibleText(By locator) {
-        WebElement element = driver.findElement(locator);
+    	 WebElement element =	 wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         return element.getText();
     }
     
